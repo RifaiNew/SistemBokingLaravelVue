@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="app">
-            <example-component>test</example-component>
+            <example-component></example-component>
         </div>
     </body>
 </html>
