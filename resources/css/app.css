@@ -1,0 +1,382 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(181, 164, 123);
+    color: white;
+}
+
+
+header {
+    height: 500px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.09), rgb(181, 164, 123)), url("../assets/rangan.png") no-repeat center center;
+    background-size: cover;
+}
+
+header .logo a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.hero {
+    width: 100%;
+    height: 350px;
+    text-shadow: 2px 2px 4px #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+nav {
+    padding: 15px 0;
+    display: flex; /* Enable flex on nav */
+    justify-content: flex-end; /* Align items to the right */
+    flex: 1; /* Allow nav to grow */
+}
+
+nav ul {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox for layout */
+}
+
+nav li {
+    margin: 0 20px; /* Space between items */
+}
+
+nav a {
+    color: white; /* Text color */
+    text-decoration: none;
+    padding: 8px 15px; /* Internal padding */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+nav a:hover {
+    background-color: rgb(101, 87, 63);
+    color: white;
+}
+
+
+.upper-hero {
+    display: flex; /* Enable flexbox for upper hero */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    justify-content: space-between; /* Space between logo and nav */
+}
+
+/* card */
+
+.main-card .title{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: rgb(101, 87, 63);
+}
+
+.cards {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px; 
+    max-width: 1200px; 
+    margin-inline: auto; 
+    padding-bottom: 20px;
+    color: rgb(101, 87, 63);
+}
+
+.card {
+    flex: 1 1 calc(33.333% - 40px); 
+    box-sizing: border-box; 
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.harga-text {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(101, 87, 63);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: rgb(70, 60, 45);
+}
+
+
+
+
+/* warung */
+.main-warung{
+    display: flex;
+    flex-direction: column; /* Mengubah menjadi kolom */
+    gap: 20px; /* Jarak antar item */
+    max-width: 1200px; /* Batas lebar kontainer */
+    margin-inline: auto; /* Memusatkan container di halaman */
+    padding-bottom: 20px;
+}
+
+main {
+    padding-bottom: 20px;
+}
+
+.list-view-item {
+    box-sizing: border-box; 
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border: 1px solid #e0e0e0; /* Tambahkan border */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+    padding: 20px; /* Tambahkan padding */
+    transition: box-shadow 0.3s ease; /* Transisi untuk bayangan */
+}
+
+.list-view-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih jelas saat hover */
+}
+
+.list-view-img {
+    height: 150px; /* Mengatur tinggi gambar agar lebih sesuai dalam list */
+    width: 150px; /* Lebar tetap untuk gambar */
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border-radius: 4px; /* Sudut melengkung pada gambar */
+}
+
+.list-view-content {
+    flex: 1; /* Mengatur konten card mengambil sisa ruang */
+}
+
+.list-view-title {
+    color: rgb(101, 87, 63);
+    font-size: 1.5em; /* Ukuran font lebih besar untuk judul */
+    margin: 0 0 10px; /* Mengatur margin judul */
+}
+
+.harga-text {
+    font-weight: bold;
+    color: rgb(101, 87, 63); /* Warna lebih kontras untuk harga */
+    margin: 0 0 10px; /* Tambahkan margin bawah */
+}
+
+.list-view-text {
+    color: #555;
+    margin: 0 0 20px; /* Tambahkan margin bawah */
+}
+
+.list-view-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(101, 87, 63);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Tambahkan transform untuk efek */
+}
+
+.list-view-button:hover {
+    background-color: rgb(70, 60, 45);
+    transform: translateY(-2px); /* Efek angkat saat hover */
+}
+
+/* end warung */
+
+.content {
+    margin-inline: auto;
+    width: 100%;
+    display: flex; /* Flexbox for content */
+    flex-direction: row; /* Row layout */
+    gap: 20px; /* Gap between elements */
+    padding: 20px; /* Internal padding */
+    max-width: 1200px;
+}
+
+.content-description {
+    flex: 1; /* Allow description to take available space */
+}
+
+.content-image {
+    border-radius: 20px;
+    height: 80%;
+    overflow: hidden; /* Menghindari gambar melampaui batas */
+}
+
+.content-image img{
+    border-radius: 20px; /* Sudut melengkung */
+}
+
+.landing-image {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease; /* Transisi halus */
+}
+
+.landing-image:hover {
+    border-radius: 20px;
+    transform: scale(1.05); /* Zoom effect saat hover */
+}
+
+/* Button styling */
+.btn-primary {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.btn-warung, .btn-contact {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(101, 87, 63);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transform for effect */
+}
+
+.btn-warung:hover, .btn-contact:hover {
+    background-color: rgb(70, 60, 45); /* Darker color on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* end content */
+
+.product-detail {
+    max-width: 800px; /* Limit width of product detail */
+    width: 100%; /* Allow full width */
+    text-align: center; /* Center text inside */
+    margin: 0 auto; /* Center the product detail container */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    color: rgb(101, 87, 63); /* Use a contrasting color */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Make title uppercase */
+    letter-spacing: 1px; /* Add some spacing between letters */
+}
+
+.product-details {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of menu categories */
+    gap: 20px; /* Space between menu items */
+    justify-content: center; /* Center menu categories */
+}
+
+.menu-category {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust width for three items per row */
+    min-width: 150px; /* Ensure a minimum width */
+    text-align: center; /* Center text within the category */
+    border-radius: 5px; /* Rounded corners for categories */
+    padding: 10px; /* Internal padding */
+    transition: transform 0.3s ease; /* Transition for hover effect */
+}
+
+.menu-category:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.category-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(101, 87, 63); /* Darker color for better contrast */
+    padding: 10px 0;
+    margin-bottom: 10px; /* Space between title and items */
+    text-decoration: underline; /* Underline the category title */
+}
+
+.menu-category li {
+    padding: 8px 0;
+    color: #666; /* Text color for menu items */
+    margin: 0; /* Remove default margin */
+}
+
+.menu-category li:hover {
+    color: rgb(101, 87, 63); /* Change color on hover */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+
+  
+ /* footer */
+footer {
+    width: 100%;
+    background-color: rgb(101, 87, 63);
+    color: white;
+}
+
+.main-foot {
+    padding-block: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.left-foot, .right-foot {
+    flex: 1;
+    min-width: 200px;
+}
+
+.left-foot p, .right-foot p {
+    margin: 5px 0;
+}
+
+.right-foot {
+    text-align: right;
+}
