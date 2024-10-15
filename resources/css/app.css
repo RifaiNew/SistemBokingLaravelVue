@@ -17,9 +17,20 @@ header {
 }
 
 header .logo a{
-    font-size: 20px;
     text-decoration: none;
-    color: black;
+    color: #b71c1c;
+}
+
+.logo {
+    font-size: 2rem; /* Ukuran font logo */
+    font-weight: bold; /* Ketebalan font */
+    color: #b71c1c; /* Warna teks logo */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Bayangan teks */
+    transition: transform 0.3s; /* Transisi saat hover */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Membesar saat hover */
 }
 
 .hero {
@@ -185,7 +196,7 @@ main {
 }
 
 .list-view-img {
-    height: 150px; /* Mengatur tinggi gambar agar lebih sesuai dalam list */
+    height: 200px; /* Mengatur tinggi gambar agar lebih sesuai dalam list */
     width: 150px; /* Lebar tetap untuk gambar */
     object-fit: cover; /* Memastikan gambar tidak terdistorsi */
     border-radius: 4px; /* Sudut melengkung pada gambar */
@@ -287,70 +298,247 @@ main {
 
 /* end content */
 
+.product-wrapper {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
 .product-detail {
-    max-width: 800px; /* Limit width of product detail */
-    width: 100%; /* Allow full width */
-    text-align: center; /* Center text inside */
-    margin: 0 auto; /* Center the product detail container */
-    padding: 20px; /* Add padding for better spacing */
-    border-radius: 10px; /* Rounded corners */
-}
-
-.title h1 {
-    font-size: 2.5rem;
-    color: rgb(101, 87, 63); /* Use a contrasting color */
-    margin-bottom: 20px;
-    text-transform: uppercase; /* Make title uppercase */
-    letter-spacing: 1px; /* Add some spacing between letters */
-}
-
-.product-details {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping of menu categories */
-    gap: 20px; /* Space between menu items */
-    justify-content: center; /* Center menu categories */
+    flex-direction: column;
+    gap: 2px;
 }
 
-.menu-category {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    flex: 1 1 calc(33.333% - 20px); /* Adjust width for three items per row */
-    min-width: 150px; /* Ensure a minimum width */
-    text-align: center; /* Center text within the category */
-    border-radius: 5px; /* Rounded corners for categories */
-    padding: 10px; /* Internal padding */
-    transition: transform 0.3s ease; /* Transition for hover effect */
+.product-item {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
-.menu-category:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+.product-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-.category-title {
+.product-content {
+    flex: 1;
+    text-align: left;
+    color: rgb(101, 87, 63);
+}
+
+.product-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.harga-text {
     font-weight: bold;
-    font-size: 1.5rem;
-    color: rgb(101, 87, 63); /* Darker color for better contrast */
-    padding: 10px 0;
-    margin-bottom: 10px; /* Space between title and items */
-    text-decoration: underline; /* Underline the category title */
+    color: rgb(101, 87, 63);
+    margin-bottom: 10px;
 }
 
-.menu-category li {
-    padding: 8px 0;
-    color: #666; /* Text color for menu items */
-    margin: 0; /* Remove default margin */
+.list-view-text {
+    color: #555;
+    margin-bottom: 20px;
 }
 
-.menu-category li:hover {
-    color: rgb(101, 87, 63); /* Change color on hover */
-    transition: color 0.3s; /* Smooth transition for hover effect */
+.product-content p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.btn-pesan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.status {
+    background-color: red; /* Warna latar belakang tombol */
+    color: white; /* Warna teks */
+    padding: 0px 30px; /* Padding dalam tombol */
+    border-radius: 20px; /* Sudut melengkung tombol */
+    display: inline-flex; /* Inline flex untuk tombol */
+    justify-content: center; /* Pusatkan teks */
+    align-items: center; /* Pusatkan vertikal */
+}
+
+/* end */
+
+.content-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Pusatkan tombol di tengah secara horizontal */
+    margin: 0 auto;
+    gap: 10px;
+    max-width: 600px; /* Batas lebar maksimal untuk form */
+    width: 100%; /* Memastikan form responsif */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: rgb(101, 87, 63);
+    color: white;
+    width: 100px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center; /* Memastikan teks di dalam tombol terpusat */
+}
+/* end */
+
+
+.order-form {
+    max-width: 600px; /* Batas lebar form */
+    margin: 0 auto; /* Memusatkan form di halaman */
+    background-color: white; /* Background untuk kontras */
+    padding: 20px; /* Ruang di dalam form */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    color: rgb(101, 87, 63); /* Warna teks */
+    margin-bottom: 20px;
+}
+
+.order-form h2 {
+    text-align: center; /* Pusatkan judul form */
+    color: #b71c1c; /* Warna judul */
+}
+
+.order-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar elemen form */
+}
+
+.order-form label {
+    font-weight: bold; /* Ketebalan teks label */
+    margin-bottom: 5px;
+}
+
+.order-form input, .order-form textarea {
+    width: 100%; /* Lebar penuh form input */
+    padding: 10px;
+    border: 1px solid #ccc; /* Border form */
+    border-radius: 4px;
+    box-sizing: border-box; /* Menghitung padding dan border */
+}
+
+.order-form textarea {
+    height: 100px; /* Tinggi untuk textarea */
+}
+
+button {
+    background-color: rgb(101, 87, 63);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center; /* Pastikan teks di dalam tombol terpusat */
+    margin: 0 auto; /* Pusatkan tombol di tengah */
+    width: 150px; /* Lebar tombol */
+}
+
+button:hover {
+    background-color: rgb(70, 60, 45); /* Warna saat hover */
+}
+
+
+
+/* Login Form Styling */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: rgb(101, 87, 63);
+}
+
+.login-form h2 {
+    text-align: center;
+    color: #b71c1c;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(101, 87, 63);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(70, 60, 45);
+}
+
+.register-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.register-text a {
+    color: #b71c1c;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
 }
 
 
   
  /* footer */
 footer {
+    margin-top: 30px;
     width: 100%;
     background-color: rgb(101, 87, 63);
     color: white;

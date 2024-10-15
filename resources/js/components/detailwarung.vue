@@ -1,30 +1,50 @@
 <template>
     <main>
-        <div class="product-detail">
-            <div class="title">
-                <h1>Menu</h1>
+        <div class="btn-pesan">
+            <h3>15000/orang</h3>
+            <div class="btn-primary">
+                <router-link to="/boking" class="btn-warung">Boking</router-link>
             </div>
-            <div class="product-details">
-                <ul class="menu-category">
-                    <li class="category-title">Makanan Berat</li>
-                    <li>adsaadda</li>
-                    <li>aasdadad</li>
-                </ul>
-                <ul class="menu-category">
-                    <li class="category-title">Makanan Ringan</li>
-                    <li>adsa</li>
-                    <li>aasda</li>
-                </ul>
-                <ul class="menu-category">
-                    <li class="category-title">Minuman</li>
-                    <li>adsad</li>
-                    <li>adsad</li>
-                </ul>
-                <ul class="menu-category">
-                    <li class="category-title">Minuman</li>
-                    <li>aasd</li>
-                    <li>aasdasd</li>
-                </ul>
+        </div>
+        <div class="product-wrapper">
+            <div class="product-detail">
+                <div class="product-item">
+                    <img src="../../assets/nasgor.jpg" alt="Nasi Goreng Biasa" class="product-img">
+                    <div class="product-content">
+                        <h2>Nasi Goreng Biasa</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                        <p>Harga : <span class="harga-text">20.000</span></p>
+                        <p>Status : tersedia</p>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="../../assets/nasgor.jpg" alt="Nasi Goreng Mawut" class="product-img">
+                    <div class="product-content">
+                        <h2>Nasi Goreng Mawut</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                        <p>Harga : <span class="harga-text">20.000</span></p>
+                        <p>Status : tidak tersedia</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="../../assets/nasgor.jpg" alt="Nasi Goreng Mawut" class="product-img">
+                    <div class="product-content">
+                        <h2>Nasi Goreng Mawut</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                        <p>Harga : <span class="harga-text">20.000</span></p>
+                        <p>Status : tidak tersedia</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="../../assets/nasgor.jpg" alt="Nasi Goreng Mawut" class="product-img">
+                    <div class="product-content">
+                        <h2>Nasi Goreng Mawut</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                        <p>Harga : <span class="harga-text">20.000</span></p>
+                        <p>Status : tidak tersedia</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

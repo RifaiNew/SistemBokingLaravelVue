@@ -15,9 +15,7 @@
     </head>
     <body>
         <div id="app">
-            <example-component>
-                <input v-model="message" class="form-control">
-            </example-component>
+            <example-component></example-component>
         </div>
     </body>
 </html>

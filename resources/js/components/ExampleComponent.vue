@@ -13,15 +13,16 @@
                         <router-link to="/warung">Warung</router-link>
                     </li>
                     <li>
+                        <router-link to="/pesanan">Pesanan</router-link>
+                    </li>
+                    <li>
                         <router-link to="/about">About</router-link>
                     </li>
                     <li>
-                        <router-link to="/">Contact</router-link>
-                        <!-- <a href="#">Cart</a> -->
+                        <router-link to="/contact">Contact</router-link>
                     </li>
                     <li>
-                        <router-link to="/">Login</router-link>
-                        <!-- <a href="#">Contact</a> -->
+                        <router-link to="/login">Login</router-link>
                     </li>
                 </ul>
             </nav>
@@ -51,11 +52,3 @@
         </div>
     </footer>
 </template>
-
-<script>
-    export default {
-        mounted() {
-            console.log('Component mounted.');
-        }
-    }
-</script>
