@@ -21,5 +21,4 @@
             <router-link to="/login">Login di sini</router-link>
         </p>
     </div>
-
 </template>

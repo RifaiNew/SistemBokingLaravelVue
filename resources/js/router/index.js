@@ -24,7 +24,7 @@ const routes = [
         component:warung,
     },
     { 
-        path: '/detailwarung',
+        path: '/detailwarung/:id',
         component:detailwarung,
     },
     { 

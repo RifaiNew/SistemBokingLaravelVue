@@ -20,37 +20,52 @@
                 <h1>Warung Populer</h1>
             </div>
             <div class="cards">
-                <div class="card">
-                    <img src="../../assets/rangan.png" alt="Card Image" class="card-img">
+                <div class="card" v-for="warung in warungs" :key="warung.id">
+                    <img :src="`/assets/${warung.image}`" :alt="warung.title" class="card-img">
                     <div class="card-content">
-                        <h2 class="card-title">Warung nasi goreng citra rasa</h2>
-                        <p class="harga-text">15000/orang</p>
-                        <p>Open</p>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quia earum sed voluptates, dolorum ipsum quis nulla. Laboriosam consequuntur ea tempore consectetur quidem nesciunt! Iste nulla rerum amet inventore sequi?</p>
-                        <a href="#" class="card-button">Lebih Lanjut</a>
-                    </div>
-                </div> 
-                <div class="card">
-                    <img src="../../assets/rangan.png" alt="Card Image" class="card-img">
-                    <div class="card-content">
-                        <h2 class="card-title">Warung nasi goreng citra rasa</h2>
-                        <p class="harga-text">15000/orang</p>
-                        <p>Open</p>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quia earum sed voluptates, dolorum ipsum quis nulla. Laboriosam consequuntur ea tempore consectetur quidem nesciunt! Iste nulla rerum amet inventore sequi?</p>
-                        <a href="#" class="card-button">Lebih Lanjut</a>
-                    </div>
-                </div> 
-                <div class="card">
-                    <img src="../../assets/rangan.png" alt="Card Image" class="card-img">
-                    <div class="card-content">
-                        <h2 class="card-title">Warung nasi goreng citra rasa</h2>
-                        <p class="harga-text">15000/orang</p>
-                        <p>Open</p>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quia earum sed voluptates, dolorum ipsum quis nulla. Laboriosam consequuntur ea tempore consectetur quidem nesciunt! Iste nulla rerum amet inventore sequi?</p>
-                        <a href="#" class="card-button">Lebih Lanjut</a>
+                        <h2 class="card-title">{{ warung.title }}</h2>
+                        <p class="harga-text">{{ warung.price }}/orang</p>
+                        <p>{{ warung.status }}</p>
+                        <p class="card-text">{{ warung.description }}</p>
+                        <router-link :to="`/detailwarung/${warung.id}`" class="card-button">Lebih Lanjut</router-link>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            warungs: [
+                {
+                    id: 1,
+                    title: 'Warung Nasi Goreng Citra Rasa',
+                    price: 15000,
+                    status: 'Open',
+                    description: 'Lorem ipsum dolor sit amet...',
+                    image: 'rangan.png',
+                },
+                {
+                    id: 2,
+                    title: 'Warung Nasi Goreng Citra Rasa',
+                    price: 15000,
+                    status: 'Open',
+                    description: 'Lorem ipsum dolor sit amet...',
+                    image: 'rangan.png',
+                },
+                {
+                    id: 3,
+                    title: 'Warung Nasi Goreng Citra Rasa',
+                    price: 15000,
+                    status: 'Open',
+                    description: 'Lorem ipsum dolor sit amet...',
+                    image: 'rangan.png',
+                },
+            ],
+        };
+    },
+};
+</script>

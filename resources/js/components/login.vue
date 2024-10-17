@@ -15,5 +15,4 @@
             <router-link to="/regis">Registrasi di sini</router-link>
         </p>
     </div>
-
 </template>
