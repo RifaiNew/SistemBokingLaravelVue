@@ -22,7 +22,8 @@
                         <router-link to="/contact">Contact</router-link>
                     </li>
                     <li>
-                        <router-link to="/login">Login</router-link>
+                        <router-link v-if="!user" to="/login">Login</router-link>
+                        <span v-else @click="logout" style="cursor: pointer;">{{ user.nama }}</span> <!-- Tampilkan nama pengguna -->
                     </li>
                 </ul>
             </nav>
@@ -52,3 +53,22 @@
         </div>
     </footer>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters(['user']), // Ambil user dari Vuex
+    },
+    methods: {
+        logout() {
+            const confirmed = window.confirm("Apakah Anda yakin ingin keluar?");
+            if (confirmed) {
+                this.$store.dispatch('logoutUser');
+                this.$router.push('/');
+            }
+        },
+    },
+};
+</script>

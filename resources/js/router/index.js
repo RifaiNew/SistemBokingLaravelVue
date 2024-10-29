@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from '../store/store.js';
 
 import home from '../components/HomePage.vue';
 import about from '../components/about.vue';
@@ -9,6 +10,9 @@ import contact from '../components/contact.vue';
 import boking from '../components/boking.vue';
 import login from '../components/login.vue';
 import regis from '../components/regis.vue';
+import adminForm from '../components/adminForm.vue';
+import tambahWarung from '../components/tambahWarung.vue';
+import ubahWarung from '../components/ubahWarung.vue';
 
 const routes = [
     { 
@@ -24,8 +28,19 @@ const routes = [
         component:warung,
     },
     { 
-        path: '/detailwarung/:id',
-        component:detailwarung,
+        path: '/tambahWarung',
+        component:tambahWarung,
+    },
+    { 
+        path: '/ubahWarung/:idWarung',
+        name: 'ubahWarung',
+        component: ubahWarung,
+        props: true 
+    },
+    { 
+        path: '/detailwarung/:id/:harga/:nama',
+        name: 'detailwarung',
+        component:detailwarung, 
     },
     { 
         path: '/pesanan',
@@ -36,9 +51,23 @@ const routes = [
         component:contact,
     },
     { 
-        path: '/boking',
+        path: '/boking/:id/:harga/:nama',
+        name: 'boking',
         component:boking,
-    },
+    },    
+    { 
+        path: '/adminForm',
+        name: 'adminForm',
+        component: adminForm, // Ganti dengan komponen yang sesuai untuk formAdmin
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user; // Ambil data user dari Vuex
+            if (user && user.role === 'admin') {
+                next(); // Jika admin, lanjutkan ke rute
+            } else {
+                next('/contact'); // Jika bukan admin, arahkan ke halaman utama atau halaman lain
+            }
+        }
+    },    
     { 
         path: '/login',
         component:login,

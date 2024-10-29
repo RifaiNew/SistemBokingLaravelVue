@@ -1,29 +1,38 @@
 <template>
-    <main>
-      <div class="main-warung">
-        <div v-for="warung in warungs" :key="warung.id" class="list-view-item">
-        <img :src="`/assets/${warung.image}`" :alt="warung.title" class="list-view-img">
-          <div class="list-view-content">
-            <h2 class="list-view-title">{{ warung.title }}</h2>
-            <p class="harga-text">{{ warung.price }}/orang</p>
-            <p class="list-view-text">{{ warung.status }}</p>
-            <p class="list-view-text">{{ warung.description }}</p>
-            <router-link :to="`/detailwarung/${warung.id}`" class="list-view-button">Detail</router-link>
-          </div>
+  <main>
+    <div class="main-warung">
+      <div v-for="warung in warung" :key="warung.idWarung" class="list-view-item">
+        <img :src="`/assets/${warung.gambarWarung}`" :alt="warung.namaWarung" class="list-view-img">
+        <div class="list-view-content">
+          <h2 class="list-view-title">{{ warung.namaWarung }}</h2>
+          <p class="harga-text">{{ warung.harga }}/orang</p>
+          <p class="list-view-text">{{ warung.status }}</p>
+          <p class="list-view-text">{{ warung.deskripsi }}</p>
+          <router-link 
+            :to="{ name: 'detailwarung', params: { id: warung.idWarung, harga: warung.harga, nama: warung.namaWarung } }" 
+            class="list-view-button">
+            Detail
+          </router-link>
         </div>
       </div>
-    </main>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        warungs: [
-          { id: 1, title: 'Warung nasi goreng citra rasa', price: '15000', status: 'Open', description: 'Lorem ipsum...', image: 'gambarres.jpg' },
-          { id: 2, title: 'Warung Sate Ayam', price: '20000', status: 'Open', description: 'Lorem ipsum...', image: 'gambarres.jpg' },
-        ],
-      };
-    },
-  };
-  </script>
+    </div>
+  </main>
+</template>
+
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['warung']), // Ensure this matches your store's state
+  },
+  mounted() {
+    this.$store.dispatch('fetchWarung');
+  },
+};
+</script>
+
+<style scoped>
+/* Add your styles here */
+</style>
