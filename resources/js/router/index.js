@@ -13,6 +13,9 @@ import regis from '../components/regis.vue';
 import adminForm from '../components/adminForm.vue';
 import tambahWarung from '../components/tambahWarung.vue';
 import ubahWarung from '../components/ubahWarung.vue';
+import adminproduk from '../components/adminproduk.vue';
+import ubahProduk from '../components/ubahProduk.vue';
+import tambahProduk from '../components/tambahProduk.vue';
 
 const routes = [
     { 
@@ -32,9 +35,19 @@ const routes = [
         component:tambahWarung,
     },
     { 
+        path: '/tambahProduk/:idWarung',
+        component:tambahProduk,
+    },
+    { 
         path: '/ubahWarung/:idWarung',
         name: 'ubahWarung',
         component: ubahWarung,
+        props: true 
+    },
+    { 
+        path: '/ubahProduk/:idProduk',
+        name: 'ubahProduk',
+        component: ubahProduk,
         props: true 
     },
     { 
@@ -68,6 +81,11 @@ const routes = [
             }
         }
     },    
+    {
+        path: '/adminproduk/:idWarung',
+        name: 'Produk',
+        component: adminproduk, // ganti dengan nama komponen produk Anda
+    },
     { 
         path: '/login',
         component:login,

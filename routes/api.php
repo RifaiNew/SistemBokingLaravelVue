@@ -24,13 +24,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // web.php
-Route::middleware('auth:sanctum')->post('/warung', [WarungController::class, 'store']);
-Route::middleware('auth:sanctum')->delete('/warung/{idWarung}', [WarungController::class, 'destroy']);
-Route::get('/warung/{idWarung}/produks', [ProdukController::class, 'index']);
-Route::put('/warung/{idWarung}', [WarungController::class, 'update']);
-Route::get('/warung/{idWarung}', [WarungController::class, 'show']);
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/warung', [WarungController::class, 'store']);
+
+Route::get('/warung/{idWarung}/produks', [ProdukController::class, 'index']);
+
+Route::middleware('auth:sanctum')->put('/produk/{idProduk}', [ProdukController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('/produk/{idProduk}', [ProdukController::class, 'destroy']);
+Route::middleware('auth:sanctum')->post('/produk', [ProdukController::class, 'store']);
+Route::get('/produk/{idProduk}', [ProdukController::class, 'show']);
+
+Route::middleware('auth:sanctum')->delete('/warung/{idWarung}', [WarungController::class, 'destroy']);
+Route::middleware('auth:sanctum')->put('/warung/{idWarung}', [WarungController::class, 'update']);
+Route::get('/warung/{idWarung}', [WarungController::class, 'show']);
 Route::get('/warung', [WarungController::class, 'index']);
 Route::middleware('auth:sanctum')->get('/reservasi', [ReservasiController::class, 'index']);
 Route::middleware('auth:sanctum')->get('/boking', [BokingController::class, 'index']);

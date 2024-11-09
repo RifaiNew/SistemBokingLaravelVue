@@ -48,7 +48,7 @@ export default {
                 if (userRole === 'admin') {
                     this.$router.push('/adminForm'); // Redirect to admin form if user is an admin
                 } else {
-                    this.$router.push('/contact'); // Redirect to the homepage or another page
+                    this.$router.push('/'); // Redirect to the homepage or another page
                 }
                 
                 alert(response.data.message);

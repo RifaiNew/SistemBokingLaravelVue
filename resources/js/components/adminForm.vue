@@ -3,7 +3,7 @@
       <div class="main-warung">
         <div class="btn-pesan">
             <div class="btn-primary">
-                <router-link to="/tambahWarung" class="btn-warung">Tambah</router-link>
+                <router-link to="/tambahWarung" class="btn-warung">Tambah Warung</router-link>
             </div>
         </div>
         <div v-for="warung in warung" :key="warung.idWarung" class="list-view-item">
@@ -18,6 +18,11 @@
             </router-link>
             <router-link :to="`/ubahWarung/${warung.idWarung}`" class="list-view-button">
                 Ubah
+            </router-link>
+          </div>
+          <div class="right-content" style="margin-top: 70px;">
+            <router-link :to="`/adminproduk/${warung.idWarung}`" class="list-view-button">
+                Produk
             </router-link>
           </div>
         </div>

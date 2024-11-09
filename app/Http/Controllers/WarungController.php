@@ -46,7 +46,6 @@ class WarungController extends Controller
         $imageName = time().'.'.$request->gambarWarung->extension();  
         $request->gambarWarung->move(public_path('assets'), $imageName);
 
-        // Create warung
         $warung = Warung::create([
             'namaWarung' => $request->namaWarung,
             'gambarWarung' => $imageName,
@@ -60,37 +59,42 @@ class WarungController extends Controller
     }
     public function update(Request $request, $idWarung)
     {
-        \Log::info('Incoming Request Data:', $request->all());
-        // Validate the request
-        $validatedData = $request->validate([
-            'namaWarung' => 'required|string', // Ensure max length matches database
-            'deskripsi' => 'required|string',
-            'status' => 'required|string',
-            'harga' => 'required|numeric',
-            'gambarWarung' => 'sometimes|file|mimes:jpeg,png,jpg,gif|max:2048', // Optional file validation
+        \Log::info('Data FormData:', [
+            'namaWarung' => $request->input('namaWarung'),
+            'harga' => $request->input('harga'),
+            'status' => $request->input('status'),
+            'deskripsi' => $request->input('deskripsi'),
+            'gambarWarung' => $request->input('gambarWarung')
         ]);
-        \Log::info('Validated Warung Data:', $validatedData);
+        
+        $request->validate([
+            'namaWarung' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'status' => 'required|string',
+            'deskripsi' => 'required|string',
+            'gambarWarung' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        // Find the warung by ID and update it
         $warung = Warung::findOrFail($idWarung);
-        // Update warung attributes
-        $warung->namaWarung = $validatedData['namaWarung'];
-        $warung->harga = $validatedData['harga'];
-        $warung->status = $validatedData['status'];
-        $warung->deskripsi = $validatedData['deskripsi'];
 
-        // Handle file upload if needed
+        $warung->namaWarung = $request->namaWarung;
+        $warung->harga = $request->harga;
+        $warung->status = $request->status;
+        $warung->deskripsi = $request->deskripsi;
+
+        $imageName = time().'.'.$request->gambarWarung->extension();  
+        $request->gambarWarung->move(public_path('assets'), $imageName);
+
         if ($request->hasFile('gambarWarung')) {
-            // Store the image and update the warung's image path if applicable
-            $path = $request->file('gambarWarung')->store('uploads', 'public'); // Adjust the storage path as needed
-            $warung->gambarWarung = $path;
+            $warung->gambarWarung = $imageName;
         }
 
-        // Save the updated warung
         $warung->save();
 
-        return response()->json(['message' => 'Warung updated successfully', 'warung' => $warung], 200);
+        return response()->json(['message' => 'Warung updated successfully', 'warung' => $warung]);
     }
+
+
 
 
 

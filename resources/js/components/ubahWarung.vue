@@ -34,7 +34,8 @@ export default {
             gambarWarung: null,
             harga: '',
             status: '',
-            deskripsi: ''
+            deskripsi: '',
+            selectedFile: null
         };
     },
     computed: {
@@ -44,41 +45,44 @@ export default {
         const response = await axios.get(`/api/warung/${this.idWarung}`);
         const warung = response.data;
 
-        // Populate form with existing warung data
         this.namaWarung = warung.namaWarung;
         this.harga = warung.harga;
         this.status = warung.status;
         this.deskripsi = warung.deskripsi;
     },
     methods: {
-        async submitForm() {
-            const formData = new FormData();
-            formData.append('namaWarung', this.namaWarung);
-            if (this.gambarWarung) {
-                formData.append('gambarWarung', this.gambarWarung);
-            }
-            formData.append('harga', this.harga);
-            formData.append('status', this.status);
-            formData.append('deskripsi', this.deskripsi);
-            
-            // Logging the formData entries
-            for (const [key, value] of formData.entries()) {
-                console.log(`${key}:`, value);
-            }
+    async submitForm() {
+        const formData = new FormData();
+        formData.append('namaWarung', this.namaWarung || '');
+        formData.append('harga', this.harga || '');
+        formData.append('status', this.status || '');
+        formData.append('deskripsi', this.deskripsi || '');
 
-            try {
-                await this.$store.dispatch('updateWarung', { idWarung: this.idWarung, warungData: formData });
-                alert('Warung berhasil diubah');
-                this.$router.push('/warung'); // Redirect to warung list after updating
-            } catch (error) {
-                alert('Gagal mengubah warung: ' + error.response.data.message);
-            }
-        },
-        onFileChange(e) {
-            this.gambarWarung = e.target.files[0];
-            console.log('Selected file:', this.gambarWarung);
+        if (this.selectedFile) {
+            formData.append('gambarWarung', this.selectedFile);
         }
 
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${this.$store.state.token}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        };
+
+        try {
+            await this.$store.dispatch('updateWarung', { idWarung: this.idWarung, updatedData: formData, config });
+            alert('Warung updated successfully!');
+        } catch (error) {
+            if (error.response && error.response.status === 422) {
+                alert('Validation failed: ' + JSON.stringify(error.response.data.errors));
+            } else {
+                console.error('Error updating warung:', error);
+            }
+        }
+        },
+        onFileChange(e) {
+            this.selectedFile = e.target.files[0];
+        }
     }
 };
 </script>

@@ -52,12 +52,11 @@ export default {
       formData.append('idUser', this.user.idUser); 
 
       try {
-        // Call the addWarung action
         await this.addWarung(formData);
         alert('Warung berhasil ditambahkan');
-        this.$router.push('/adminForm'); // Redirect to warung list after adding
+        this.$router.push('/adminForm');
       } catch (error) {
-        alert('Gagal menambahkan warung: ' + error.response.data.message); // Display error message
+        alert('Gagal menambahkan warung: ' + error.response.data.message);
       }
     },
 
