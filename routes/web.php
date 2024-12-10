@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/{any}', function () {
+    return view('welcome'); // Mengarahkan semua rute ke file welcome.blade.php
+})->where('any', '.*');

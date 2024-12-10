@@ -25,14 +25,10 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['warung']), // Ensure this matches your store's state
+    ...mapState(['warung']),
   },
   mounted() {
     this.$store.dispatch('fetchWarung');
   },
 };
 </script>
-
-<style scoped>
-/* Add your styles here */
-</style>

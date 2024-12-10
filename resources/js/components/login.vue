@@ -35,7 +35,6 @@ export default {
                     password: this.password,
                 });
                 
-                // Save token (optional: can be stored in Vuex for central management)
                 localStorage.setItem('auth_token', response.data.token);
 
                 await this.$store.dispatch('loginUser', {
@@ -43,12 +42,11 @@ export default {
                     password: this.password,
                 });
 
-                // Redirect based on role
                 const userRole = response.data.user.role;
                 if (userRole === 'admin') {
-                    this.$router.push('/adminForm'); // Redirect to admin form if user is an admin
+                    this.$router.push('/adminForm');
                 } else {
-                    this.$router.push('/'); // Redirect to the homepage or another page
+                    this.$router.push('/');
                 }
                 
                 alert(response.data.message);

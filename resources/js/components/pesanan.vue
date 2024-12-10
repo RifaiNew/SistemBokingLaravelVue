@@ -11,7 +11,9 @@
           <p class="list-view-text">Waktu: {{ pesanan.waktuPemesanan }}</p>
           <p class="list-view-text">Instruksi: {{ pesanan.instruksi }}</p>
         </div>
-        <div class="status">{{ pesanan.status }}</div>
+        <div class="right-content" style="margin-top: 70px;">
+            <div class="status" style="padding: 40px;">{{ pesanan.status }}</div>
+        </div>
       </div>
     </div>
   </main>

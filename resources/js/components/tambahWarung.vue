@@ -37,10 +37,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['user']) // Get the user from the Vuex store
+    ...mapGetters(['user'])
   },
   methods: {
-    ...mapActions(['addWarung']), // Map the addWarung action
+    ...mapActions(['addWarung']),
 
     async submitForm() {
       const formData = new FormData();
@@ -54,7 +54,7 @@ export default {
       try {
         await this.addWarung(formData);
         alert('Warung berhasil ditambahkan');
-        this.$router.push('/adminForm');
+        this.$router.push('/warungAdmin');
       } catch (error) {
         alert('Gagal menambahkan warung: ' + error.response.data.message);
       }

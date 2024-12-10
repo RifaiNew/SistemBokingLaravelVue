@@ -30,9 +30,9 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            idProduk: this.$route.params.idProduk, // Should be idProduk, not idWarung
-            namaProduk: '', // Corrected field name
-            gambarProduk: null, // Corrected field name
+            idProduk: this.$route.params.idProduk,
+            namaProduk: '',
+            gambarProduk: null,
             harga: '',
             status: '',
             deskripsi: '',
@@ -43,10 +43,10 @@ export default {
         ...mapGetters(['user'])
     },
     async created() {
-        const response = await axios.get(`/api/produk/${this.idProduk}`); // Fetching product details
+        const response = await axios.get(`/api/produk/${this.idProduk}`);
         const produk = response.data;
 
-        this.namaProduk = produk.namaProduk; // Updated from namaWarung
+        this.namaProduk = produk.namaProduk;
         this.harga = produk.harga;
         this.status = produk.status;
         this.deskripsi = produk.deskripsi;
@@ -54,13 +54,13 @@ export default {
     methods: {
         async submitForm() {
             const formData = new FormData();
-            formData.append('namaProduk', this.namaProduk || ''); // Corrected field name
+            formData.append('namaProduk', this.namaProduk || '');
             formData.append('harga', this.harga || '');
             formData.append('status', this.status || '');
             formData.append('deskripsi', this.deskripsi || '');
 
             if (this.selectedFile) {
-                formData.append('gambarProduk', this.selectedFile); // Corrected field name
+                formData.append('gambarProduk', this.selectedFile);
             }
 
             const config = {

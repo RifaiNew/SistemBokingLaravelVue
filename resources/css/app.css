@@ -256,7 +256,6 @@ main {
 
 .content-image {
     border-radius: 20px;
-    height: 80%;
     overflow: hidden; /* Menghindari gambar melampaui batas */
 }
 
@@ -266,7 +265,7 @@ main {
 
 .landing-image {
     width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
+    height: 500px; /* Maintain aspect ratio */
     transition: transform 0.3s ease; /* Transisi halus */
 }
 

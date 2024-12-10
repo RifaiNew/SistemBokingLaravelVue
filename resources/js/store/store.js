@@ -12,7 +12,7 @@ if (token) {
 
 const store = createStore({
     state: {
-        user: null,
+        user: JSON.parse(localStorage.getItem('user')) || null,
         token: localStorage.getItem('auth_token') || null,
         warung: [],
         produk: []
@@ -21,6 +21,7 @@ const store = createStore({
         ...mutations,
         SET_USER(state, user) {
             state.user = user;
+            localStorage.setItem('user', JSON.stringify(user));
         },
         SET_TOKEN(state, token) {
             state.token = token;
@@ -36,7 +37,7 @@ const store = createStore({
         UPDATE_WARUNG(state, updatedWarung) {
             const index = state.warung.findIndex(w => w.idWarung === updatedWarung.idWarung);
             if (index !== -1) {
-                state.warung.splice(index, 1, updatedWarung); // Replace the old data with the updated data
+                state.warung.splice(index, 1, updatedWarung);
             }
         },
         UPDATE_PRODUCT(state, updatedProduk) {
@@ -44,7 +45,7 @@ const store = createStore({
             if (warung && warung.produk) {
                 const productIndex = warung.produk.findIndex(product => product.idProduk === updatedProduk.idProduk);
                 if (productIndex !== -1) {
-                    warung.produk.splice(productIndex, 1, updatedProduk); // Replace the old product with the updated one
+                    warung.produk.splice(productIndex, 1, updatedProduk);
                 } else {
                     console.error('Product not found in the warung');
                 }
@@ -105,7 +106,7 @@ const store = createStore({
         },
         async addProduct({ commit }, formData) {
             try {
-              const response = await axios.post('/api/produk', formData);  // POST the data to your API
+              const response = await axios.post('/api/produk', formData);
               console.log('Produk berhasil ditambahkan:', response.data);
               return response.data;
             } catch (error) {

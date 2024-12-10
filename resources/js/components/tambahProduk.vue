@@ -29,22 +29,22 @@
     data() {
       return {
         idWarung: this.$route.params.idWarung,
-        namaProduk: '',  // Changed from namaWarung to namaProduk
-        gambarProduk: null,  // Changed from gambarWarung to gambarProduk
+        namaProduk: '',
+        gambarProduk: null,
         harga: '',
         status: '',
         deskripsi: ''
       };
     },
     computed: {
-      ...mapGetters(['user'])  // Get the user from the Vuex store
+      ...mapGetters(['user'])
     },
     methods: {
-      ...mapActions(['addProduct']),  // Add a map action for adding a product
+      ...mapActions(['addProduct']),
   
       async submitForm() {
         const formData = new FormData();
-        formData.append('namaProduk', this.namaProduk);  // Append product data
+        formData.append('namaProduk', this.namaProduk);
         formData.append('gambarProduk', this.gambarProduk);
         formData.append('harga', this.harga);
         formData.append('status', this.status);

@@ -33,7 +33,6 @@ class ProdukController extends Controller
     }
     public function update(Request $request, $idProduk)
     {
-        \Log::info('Update Produk Request:', $request->all());  // Log data request
         try {
             $request->validate([
                 'namaProduk' => 'required',
@@ -50,7 +49,6 @@ class ProdukController extends Controller
                 $produk->gambarProduk = $imageName;
             }
 
-            // Update data produk lainnya
             $produk->namaProduk = $request->namaProduk;
             $produk->harga = $request->harga;
             $produk->status = $request->status;

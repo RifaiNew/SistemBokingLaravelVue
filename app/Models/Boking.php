@@ -10,6 +10,7 @@ class Boking extends Model
     use HasFactory;
 
     protected $table = 'boking';
+    protected $primaryKey = 'idBoking';
 
     public function warung()
     {

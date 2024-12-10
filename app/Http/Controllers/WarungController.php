@@ -59,14 +59,6 @@ class WarungController extends Controller
     }
     public function update(Request $request, $idWarung)
     {
-        \Log::info('Data FormData:', [
-            'namaWarung' => $request->input('namaWarung'),
-            'harga' => $request->input('harga'),
-            'status' => $request->input('status'),
-            'deskripsi' => $request->input('deskripsi'),
-            'gambarWarung' => $request->input('gambarWarung')
-        ]);
-        
         $request->validate([
             'namaWarung' => 'required|string|max:255',
             'harga' => 'required|numeric',

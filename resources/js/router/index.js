@@ -16,6 +16,7 @@ import ubahWarung from '../components/ubahWarung.vue';
 import adminproduk from '../components/adminproduk.vue';
 import ubahProduk from '../components/ubahProduk.vue';
 import tambahProduk from '../components/tambahProduk.vue';
+import warungAdmin from '../components/warungAdmin.vue';
 
 const routes = [
     { 
@@ -33,22 +34,54 @@ const routes = [
     { 
         path: '/tambahWarung',
         component:tambahWarung,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
     },
     { 
         path: '/tambahProduk/:idWarung',
         component:tambahProduk,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
     },
     { 
         path: '/ubahWarung/:idWarung',
         name: 'ubahWarung',
         component: ubahWarung,
-        props: true 
+        props: true,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
     },
     { 
         path: '/ubahProduk/:idProduk',
         name: 'ubahProduk',
         component: ubahProduk,
-        props: true 
+        props: true,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
     },
     { 
         path: '/detailwarung/:id/:harga/:nama',
@@ -71,20 +104,41 @@ const routes = [
     { 
         path: '/adminForm',
         name: 'adminForm',
-        component: adminForm, // Ganti dengan komponen yang sesuai untuk formAdmin
+        component: adminForm,
         beforeEnter: (to, from, next) => {
-            const user = store.getters.user; // Ambil data user dari Vuex
+            const user = store.getters.user;
             if (user && user.role === 'admin') {
-                next(); // Jika admin, lanjutkan ke rute
+                next();
             } else {
-                next('/contact'); // Jika bukan admin, arahkan ke halaman utama atau halaman lain
+                next('/');
             }
         }
     },    
+    { 
+        path: '/warungAdmin',
+        name: 'warungAdmin',
+        component: warungAdmin,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
+    }, 
     {
         path: '/adminproduk/:idWarung',
         name: 'Produk',
-        component: adminproduk, // ganti dengan nama komponen produk Anda
+        component: adminproduk,
+        beforeEnter: (to, from, next) => {
+            const user = store.getters.user;
+            if (user && user.role === 'admin') {
+                next();
+            } else {
+                next('/');
+            }
+        }
     },
     { 
         path: '/login',
@@ -98,6 +152,7 @@ const routes = [
 
 const router = createRouter({ 
     history: createWebHistory(),
+    linkExactActiveClass: 'active',
     routes
 });
 

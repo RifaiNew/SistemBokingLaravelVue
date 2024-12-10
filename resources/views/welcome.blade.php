@@ -10,13 +10,12 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
-        @vite(['resources/js/app.js', 'resources/css/app.css'])
+        @vite('resources/css/app.css')
 
     </head>
     <body>
         <div id="app">
-            <example-component>
-            </example-component>
+            @vite('resources/js/app.js')
         </div>
     </body>
 </html>

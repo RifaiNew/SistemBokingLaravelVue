@@ -15,17 +15,4 @@ axios.interceptors.request.use(config => {
     return config;
 });
 
-// Initialize the Vue application
-const app = createApp({});
-
-// Register the component
-app.component('example-component', ExampleComponent);
-
-// Use Vuex store
-app.use(store);
-
-// Use Vue Router
-app.use(router);
-
-// Mount the app
-app.mount('#app');
+createApp(ExampleComponent).use(store).use(router).mount('#app');

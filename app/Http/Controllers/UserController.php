@@ -10,7 +10,6 @@ class UserController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi data yang diterima
         $request->validate([
             'nama' => 'required|string|max:255',
             'password' => 'required|string|min:6',
@@ -19,7 +18,6 @@ class UserController extends Controller
             'role' => 'required|string',
         ]);
 
-        // Buat pengguna baru
         $user = User::create([
             'nama' => $request->nama,
             'password' => Hash::make($request->password), // Hash password
@@ -32,25 +30,20 @@ class UserController extends Controller
     }
     public function login(Request $request)
     {
-        // Validate incoming login data
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
 
-        // Retrieve user by email
         $user = User::where('email', $request->email)->first();
 
-        // Verify password and user existence
         if (!$user || !Hash::check($request->password, $user->password)) {
             \Log::warning('Login failed', ['email' => $request->email]);
             return response()->json(['message' => 'Login gagal'], 401);
         }
 
-        // Create a new Sanctum token
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // Return token and user data
         return response()->json([
             'message' => 'Login successful',
             'token' => $token,

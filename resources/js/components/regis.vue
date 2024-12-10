@@ -47,7 +47,6 @@ export default {
                     role: 'pelanggan'
                 };
                 
-                // Kirim data ke server
                 const response = await axios.post('/api/users', userData);
                 alert(response.data.message);
 

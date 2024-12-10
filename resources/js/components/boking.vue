@@ -49,8 +49,6 @@ export default {
       const warungId = this.$route.params.id;
       const nama = this.$route.params.nama;
       const harga = this.$route.params.harga;
-
-      // Set nama, harga, dan id ke objek warung
       this.warung = { nama: nama, harga: harga, id: warungId };
 
       try {
@@ -61,14 +59,18 @@ export default {
       }
     },
     getUserId() {
-      // Implementasikan logika untuk mendapatkan ID user yang login
-      return localStorage.getItem('userId'); // Contoh menggunakan localStorage
+      return localStorage.getItem('userId');
     },
     submitForm() {
       const userId = this.$store.getters.user?.idUser;
 
       if (!userId) {
         console.error('User is not logged in.');
+        return;
+      }
+      const isConfirmed = window.confirm('Apakah Anda yakin ingin memesan?');
+      if (!isConfirmed) {
+        console.log('Pesanan dibatalkan.');
         return;
       }
       const payload = {
@@ -86,8 +88,8 @@ export default {
         headers: { Authorization: `Bearer ${this.$store.getters.token}` }
       })
       .then(response => {
-        console.log('Pesanan berhasil dibuat:', response.data);
-        this.$router.push('/pesanan'); // Arahkan ke halaman pesanan
+        console.log('Pesanan berhasil dibuat:');
+        this.$router.push('/pesanan');
       })
       .catch(error => {
         console.error('Gagal membuat pesanan:', error.response ? error.response.data : error.message);
